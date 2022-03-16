@@ -1,0 +1,10 @@
+name = "resources"
+description = "Utility library to handle project resources at run-time"
+version = "0.1.0"
+
+website = "https://github.com/alire-project/resources"
+licenses = "MIT"
+
+authors = ["Fabien Chouteau"]
+maintainers = ["Fabien Chouteau <fabien.chouteau@gmail.com>"]
+maintainers-logins = ["Fabien-Chouteau"]
