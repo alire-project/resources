@@ -15,7 +15,7 @@ package body Resources is
       Capacity    : Interfaces.C.int;
       Dirname_Len : access Interfaces.C.int)
       return Interfaces.C.int;
-   pragma Import (C, WAI_getExecutablePath, "wai_getExecutablePath");
+   pragma Import (C, WAI_getExecutablePath, "wai_alire_getExecutablePath");
    pragma Unreferenced (WAI_getExecutablePath);
 
    function WAI_getModulePath
@@ -23,7 +23,7 @@ package body Resources is
       Capacity    : Interfaces.C.int;
       Dirname_Len : access Interfaces.C.int)
       return Interfaces.C.int;
-   pragma Import (C, WAI_getModulePath, "wai_getModulePath");
+   pragma Import (C, WAI_getModulePath, "wai_alire_getModulePath");
 
    function Get_Prefix_From_Env return String;
 
@@ -36,7 +36,7 @@ package body Resources is
       use GNAT.Strings;
 
       Env_Prefix : GNAT.Strings.String_Access :=
-        GNAT.OS_Lib.Getenv (To_Upper (Crate_Name) & "_PREFIX");
+        GNAT.OS_Lib.Getenv (To_Upper (Crate_Name) & "_ALIRE_PREFIX");
 
    begin
 

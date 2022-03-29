@@ -9,7 +9,7 @@ templates, images, 3D models, so on and so forth.
 
 ## Store resources
 
-The default, and recommeded, location for resources/assets files is the
+The default, and recommended, location for resources/assets files is the
 following: `<CRATE_ROOT>/share/<CRATE_NAME>/`
 
 For instance, a crate named `my_crate` will have the following directory
@@ -25,7 +25,7 @@ structure:
     +-- my_crate.ads
 ```
 
-You can of course have subdirectories in `share/<CRATE_NAME>`.
+You can of course have sub-directories in `share/<CRATE_NAME>`.
 
 ## Specify resources location in GPR file
 
@@ -70,10 +70,11 @@ For example:
 
 # How does it work?
 
-During development `Resources` will use a `<CRATE_NAME>_PREFIX` environment
-variable, typically set by [Alire](https://alire.ada.dev), to find the root
-direcory of the crate. So `Resources` will work no matter how the sources a
-checked out (e.g. in Alire cache folder, as a pin with relative path, etc.).
+During development `Resources` will use a `<CRATE_NAME>_ALIRE_PREFIX`
+environment variable, typically set by [Alire](https://alire.ada.dev), to find
+the root directory of the crate. So `Resources` will work no matter how the
+sources are checked out (e.g. in Alire cache folder, as a pin with relative
+path, etc.).
 
 After installation, i.e. when the env variable is not set, `Resources` will use
 a relative path from the directory where the executable/shared library is
