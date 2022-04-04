@@ -26,30 +26,7 @@ package body Resources is
    pragma Import (C, WAI_getModulePath, "wai_alire_getModulePath");
 
    function Get_Prefix_From_Env return String;
-
-   -------------------------
-   -- Get_Prefix_From_Env --
-   -------------------------
-
-   function Get_Prefix_From_Env return String is
-      use Ada.Characters.Handling;
-      use GNAT.Strings;
-
-      Env_Prefix : GNAT.Strings.String_Access :=
-        GNAT.OS_Lib.Getenv (To_Upper (Crate_Name) & "_ALIRE_PREFIX");
-
-   begin
-
-      if Env_Prefix /= null then
-         return Result : String (1 .. Env_Prefix.all'Length) do
-            Result := Env_Prefix.all;
-            GNAT.Strings.Free (Env_Prefix);
-         end return;
-      else
-
-         return "";
-      end if;
-   end Get_Prefix_From_Env;
+   function Get_Prefix return String;
 
    -----------------
    -- Module_Path --
@@ -86,19 +63,53 @@ package body Resources is
       end if;
    end Module_Path;
 
-   -----------------
-   -- Prefix_Path --
-   -----------------
+   -------------------------
+   -- Get_Prefix_From_Env --
+   -------------------------
 
-   function Prefix_Path return String is
-      From_Env : constant String := Get_Prefix_From_Env;
+   function Get_Prefix_From_Env return String is
+      use Ada.Characters.Handling;
+      use GNAT.Strings;
+
+      Env_Prefix : GNAT.Strings.String_Access :=
+        GNAT.OS_Lib.Getenv (To_Upper (Crate_Name) & "_ALIRE_PREFIX");
+
    begin
 
+      if Env_Prefix /= null then
+         return Result : String (1 .. Env_Prefix.all'Length) do
+            Result := Env_Prefix.all;
+            GNAT.Strings.Free (Env_Prefix);
+         end return;
+      else
+
+         return "";
+      end if;
+   end Get_Prefix_From_Env;
+
+   ----------------
+   -- Get_Prefix --
+   ----------------
+
+   function Get_Prefix return String is
+      From_Env : constant String := Get_Prefix_From_Env;
+   begin
       if From_Env /= "" then
          return From_Env & "/";
       else
          return Module_Path & "/" & Module_To_Prefix &"/";
       end if;
+   end Get_Prefix;
+
+   Elab_Prefix_Path : constant String := Get_Prefix;
+
+   -----------------
+   -- Prefix_Path --
+   -----------------
+
+   function Prefix_Path return String is
+   begin
+      return Elab_Prefix_Path;
    end Prefix_Path;
 
    -------------------
