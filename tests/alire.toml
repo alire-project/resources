@@ -7,11 +7,13 @@ maintainers = ["Fabien Chouteau <fabien.chouteau@gmail.com>"]
 maintainers-logins = ["Fabien-Chouteau"]
 
 executables = ["tests"]
-[[depends-on]]  # Added by alr
-resources = "~0.0.0"  # Added by alr
-[[pins]]  # Added by alr
-resources = { path='../../resources' }   # Added by alr
-[[depends-on]]  # Added by alr
-lib_a = "~0.0.0"  # Added by alr
-[[pins]]  # Added by alr
-lib_a = { path='lib_a' }   # Added by alr
+[[depends-on]]
+resources = "*"
+lib_a = "*"
+
+[[pins]]
+resources = { path='../../resources' }
+lib_a = { path='lib_a' }
+
+[build-profiles]
+resources = "validation"

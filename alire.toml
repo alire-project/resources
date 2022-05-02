@@ -2,9 +2,10 @@ name = "resources"
 description = "Utility library to handle project resources at run-time"
 version = "0.1.0"
 
-website = "https://github.com/alire-project/resources"
 licenses = "MIT"
+website = "https://github.com/alire-project/resources"
+tags = ["utils"]
 
-authors = ["Fabien Chouteau"]
+authors = ["Alire Team"]
 maintainers = ["Fabien Chouteau <fabien.chouteau@gmail.com>"]
-maintainers-logins = ["Fabien-Chouteau"]
+maintainers-logins = ["Fabien-Chouteau", "mosteo"]

@@ -6,7 +6,6 @@ with GNAT.Strings;
 with System;
 
 with Interfaces.C;
-with Interfaces.C.Strings;
 
 package body Resources is
 
@@ -97,7 +96,7 @@ package body Resources is
       if From_Env /= "" then
          return From_Env & "/";
       else
-         return Module_Path & "/" & Module_To_Prefix &"/";
+         return Module_Path & "/" & Module_To_Prefix & "/";
       end if;
    end Get_Prefix;
 

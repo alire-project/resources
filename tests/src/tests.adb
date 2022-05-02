@@ -2,10 +2,10 @@ with Ada.Text_IO; use Ada.Text_IO;
 
 with Resources;
 with Lib_A;
-with tests_Config;
+with Tests_Config;
 
 procedure Tests is
-   package My_Resources is new Resources (tests_Config.Crate_Name);
+   package My_Resources is new Resources (Tests_Config.Crate_Name);
 
 begin
    Put_Line ("Prefix_Path: " & My_Resources.Prefix_Path);
