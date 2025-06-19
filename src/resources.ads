@@ -14,6 +14,9 @@ generic
 
 package Resources is
 
+   function Executable_Path return String;
+   --  Return the absolute path to the running binary
+
    function Prefix_Path return String;
    --  Return an absolute path to the prefix/installation directory
 

@@ -15,7 +15,6 @@ package body Resources is
       Dirname_Len : access Interfaces.C.int)
       return Interfaces.C.int;
    pragma Import (C, WAI_getExecutablePath, "wai_alire_getExecutablePath");
-   pragma Unreferenced (WAI_getExecutablePath);
 
    function WAI_getModulePath
      (Output      : System.Address;
@@ -26,6 +25,32 @@ package body Resources is
 
    function Get_Prefix_From_Env return String;
    function Get_Prefix return String;
+
+   ---------------------
+   -- Executable_Path --
+   ---------------------
+
+   function Executable_Path return String is
+      use Interfaces.C;
+      use System;
+
+      Expected_Len : constant int :=
+        WAI_getExecutablePath (Null_Address, 0, null);
+   begin
+      if Expected_Len > 0 then
+         declare
+            Output : aliased String (1 .. Positive (Expected_Len));
+            Len    : constant int :=
+              WAI_getExecutablePath (Output'Address, Output'Length, null);
+         begin
+            if Len = Expected_Len then
+               return Output;
+            end if;
+         end;
+      end if;
+
+      raise Program_Error;
+   end Executable_Path;
 
    -----------------
    -- Module_Path --
