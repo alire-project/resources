@@ -33,4 +33,10 @@ jobs:
         uses: alire-project/setup-alire@v5
 
       - name: Build and run tests
-        run: alr test || { ls -alF alire; cat alire/*.log; exit 1; }
+        run: |
+          if alr test; then
+            cat alire/*.log
+          else
+            cat alire/*.log
+            exit 1
+          fi
