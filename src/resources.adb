@@ -7,7 +7,7 @@ with System;
 
 with Interfaces.C;
 
-package body Resources is
+package body Resources with SPARK_Mode => Off is
 
    function WAI_getExecutablePath
      (Output      : System.Address;

@@ -12,7 +12,7 @@ generic
    --  The default value provided here should work for all cases, i.e.
    --  when executables are installed in bin/ and libraries in lib/ or lib64/.
 
-package Resources is
+package Resources with SPARK_Mode => On is
 
    function Executable_Path return String;
    --  Return the absolute path to the running binary
