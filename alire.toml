@@ -9,3 +9,11 @@ tags = ["utils"]
 authors = ["Alire Team"]
 maintainers = ["Fabien Chouteau <fabien.chouteau@gmail.com>"]
 maintainers-logins = ["Fabien-Chouteau", "mosteo"]
+
+[[actions]]
+type="test"
+command=["alr", "-C", "tests", "build", "--validation"]
+
+[[actions]]
+type="test"
+command=["alr", "-C", "tests", "run"]
