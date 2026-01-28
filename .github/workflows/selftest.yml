@@ -33,6 +33,7 @@ jobs:
         uses: alire-project/setup-alire@v5
 
       - name: Build and run tests
+        shell: bash
         run: |
           if alr test; then
             cat alire/*.log
