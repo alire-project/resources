@@ -26,6 +26,8 @@ jobs:
     runs-on: ${{ matrix.runner }}
     steps:
       - uses: actions/checkout@v4
+        with:
+          recursive: true
 
       - name: Set up Alire
         uses: alire-project/setup-alire@v5
